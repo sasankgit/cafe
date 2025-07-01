@@ -1,6 +1,7 @@
 import React from "react";
 import "../pages/Login.css";
 import coffeeImage from "../assets/coffee-cup.png"; // Put your image in `assets` folder
+import Signup from "./Signup";
 
 export default function Login() {
   return (
@@ -19,7 +20,7 @@ export default function Login() {
             <button className="login-button animate-pop">Login</button>
           </form>
           <p className="signup-text">
-            New here? <a href="#">Create an account</a>
+            New here? <a href="Signup">Create an account</a>
           </p>
         </div>
       </div>
