@@ -2,6 +2,10 @@ import React from "react";
 import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
+import Dashboard from "./pages/Dashboard";
+import Reservation from "./pages/Reservation";
+import Order from "./pages/Order";
+import Menu from "./pages/Menu";
 
 function App() {
   return (
@@ -10,7 +14,10 @@ function App() {
         <Route path="/" element={<Navigate to="/login" />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
-        {/* You can add dashboard or other protected routes later */}
+        <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/reservation" element={<Reservation />} />
+        <Route path="/order" element={<Order/>}/>
+        <Route path="/menu" element={<Menu />} />
       </Routes>
     </Router>
   );

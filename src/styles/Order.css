@@ -1,0 +1,120 @@
+/* Order.css */
+
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(to right, #fffaf4, #f6f1e7);
+  height: 100vh;
+}
+
+.order-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center; /* Center vertically */
+  padding: 0px 20px;
+  height: 100vh;
+  animation: fadeIn 1s ease-in;
+}
+
+.order-title {
+  font-size: 2.5rem;
+  color: #4b2e2e;
+  margin-bottom: 30px;
+  animation: slideDown 1s ease-in-out;
+}
+
+.order-form {
+  background-color: #ffffff;
+  padding: 30px;
+  border-radius: 16px;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+  max-width: 500px;
+  animation: floatUp 1.4s ease-in-out;
+}
+
+label {
+  color: #6d4c41;
+  font-weight: 500;
+  display: flex;
+  flex-direction: column;
+}
+
+.input-field {
+  padding: 12px 16px;
+  font-size: 1rem;
+  border: 1px solid #cdb9b0;
+  border-radius: 8px;
+  margin-top: 5px;
+  outline: none;
+  transition: border-color 0.3s;
+}
+
+.input-field:focus {
+  border-color: #a97b61;
+}
+
+.addon-group {
+  display: flex;
+  flex-direction: column;
+  margin-top: 10px;
+}
+
+.addon-option {
+  font-size: 0.95rem;
+  margin: 4px 0;
+  color: #4b2e2e;
+}
+
+.order-button {
+  padding: 12px 16px;
+  background-color: #a97b61;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.order-button:hover {
+  background-color: #7b5e57;
+}
+
+.total-display {
+  font-size: 1.2rem;
+  color: #4b2e2e;
+  font-weight: bold;
+  text-align: center;
+  margin-top: 10px;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideDown {
+  from { transform: translateY(-30px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes floatUp {
+  from { transform: translateY(40px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+.animate-pop {
+  transform: scale(0.95);
+  animation: popIn 0.8s ease forwards;
+}
+
+@keyframes popIn {
+  from { transform: scale(0.85); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}

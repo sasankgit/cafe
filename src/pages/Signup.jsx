@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import "./Signup.css";
+import "../styles/Signup.css";
 import signupImage from "../assets/coffee-beans.png"; // Make sure this image exists
 
 export default function Signup() {
