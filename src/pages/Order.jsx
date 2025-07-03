@@ -1,19 +1,23 @@
 import React, { useState } from "react";
+import { db } from "../firebase"; // <-- make sure this is correct
+import { collection, addDoc, Timestamp } from "firebase/firestore";
 import "../styles/Order.css";
 
 const foodItems = [
-  { name: "Cappuccino", price: 150 },
-  { name: "Espresso", price: 100 },
-  { name: "Latte", price: 140 },
-  { name: "Cold Brew", price: 160 },
-  { name: "Chocolate Muffin", price: 80 },
-  { name: "Croissant", price: 90 },
+  { name: "chicken sandwich", price: 150 },
+  { name: "combo tea and sandwich", price: 100 },
+  { name: "corn soup", price: 140 },
+  { name: "egg roll", price: 160 },
+  { name: "paneer kabab", price: 80 },
+  { name: "samosa", price: 90 },
+  { name: "sandwich", price: 90 },
+  { name: "veg manchuria", price: 90 },
 ];
 
 const addonsList = [
-  { label: "Extra Shot", price: 30 },
-  { label: "Whipped Cream", price: 20 },
-  { label: "Soy Milk", price: 25 },
+  { label: "Extra pepper", price: 30 },
+  { label: "Whipped onions", price: 20 },
+  { label: "mayo", price: 25 },
 ];
 
 export default function Order() {
@@ -39,9 +43,31 @@ export default function Order() {
     return foodTotal + addonTotal;
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    alert(`Order placed for table ${table}! Total: ₹${calculateTotal()}`);
+
+    const order = {
+      food: selectedFood.name,
+      price: selectedFood.price,
+      quantity,
+      addons,
+      table,
+      total: calculateTotal(),
+      timestamp: Timestamp.now(),
+    };
+
+    try {
+      await addDoc(collection(db, "orders"), order);
+      alert(`Order placed for table ${table}! Total: ₹${order.total}`);
+      // Reset form
+      setSelectedFood(foodItems[0]);
+      setQuantity(1);
+      setAddons([]);
+      setTable("");
+    } catch (err) {
+      console.error("Error placing order:", err);
+      alert("Failed to save order. Please try again.");
+    }
   };
 
   return (

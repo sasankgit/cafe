@@ -1,5 +1,7 @@
 import React, { useState } from "react";
-import "../styles/Reservation.css";
+import { db } from "../firebase";
+import { collection, addDoc, Timestamp } from "firebase/firestore";
+import "../styles/reservation.css";
 
 export default function Reservation() {
   const [formData, setFormData] = useState({
@@ -16,11 +18,23 @@ export default function Reservation() {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Reservation details:", formData);
-    alert("Reservation submitted successfully!");
-    // You can send `formData` to Firebase later
+    try {
+      await addDoc(collection(db, "reservations"), {
+        name: formData.name,
+        date: formData.date,
+        time: formData.time,
+        people: parseInt(formData.people),
+        timestamp: Timestamp.now(),
+      });
+
+      alert("Reservation saved to Firebase!");
+      setFormData({ name: "", date: "", time: "", people: 1 });
+    } catch (error) {
+      console.error("Error saving reservation:", error);
+      alert("Failed to save reservation.");
+    }
   };
 
   return (

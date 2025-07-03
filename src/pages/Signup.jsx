@@ -1,9 +1,13 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import { auth } from "../firebase"; // Make sure this file is correctly set up
 import "../styles/Signup.css";
-import signupImage from "../assets/coffee-beans.png"; // Make sure this image exists
+import signupImage from "../assets/coffee-beans.png";
 
 export default function Signup() {
+  const navigate = useNavigate();
+
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -17,15 +21,20 @@ export default function Signup() {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // This is where you'll use Firebase auth logic later.
     if (formData.password !== formData.confirmPassword) {
       alert("Passwords do not match");
       return;
     }
-    console.log("Signup data:", formData);
-    // firebase.auth().createUserWithEmailAndPassword(formData.email, formData.password)...
+
+    try {
+      await createUserWithEmailAndPassword(auth, formData.email, formData.password);
+      alert("Signup successful!");
+      navigate("/dashboard");
+    } catch (error) {
+      alert("Signup failed: " + error.message);
+    }
   };
 
   return (
@@ -66,7 +75,7 @@ export default function Signup() {
               className="input-field animate-slide delay2"
               required
             />
-            <button className="signup-button animate-pop">Sign Up</button>
+            <button type="submit" className="signup-button animate-pop">Sign Up</button>
           </form>
           <p className="login-text">
             Already have an account? <Link to="/login">Login</Link>

@@ -1,6 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import "../styles/Dashboard.css";
+import logo from "../assets/vitap.png";
 
 export default function Dashboard() {
   const navigate = useNavigate();
@@ -11,6 +12,7 @@ export default function Dashboard() {
 
   return (
     <div className="dashboard-container">
+      <img src={logo} alt="Logo" className="top-right-logo" />
       <h1 className="dashboard-title">Welcome to the Café Dashboard</h1>
       <div className="nav-buttons">
         <div

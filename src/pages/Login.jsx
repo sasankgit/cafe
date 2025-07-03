@@ -1,19 +1,28 @@
-import React from "react";
+import React, { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
-import "../styles/Login.css"; // Make sure you place the reused CSS here or rename appropriately
+import { signInWithEmailAndPassword } from "firebase/auth";
+import { auth } from "../firebase"; // Ensure this is correctly configured
+import "../styles/Login.css";
 import coffeeImage from "../assets/coffee-cup.png";
 
 export default function Login() {
   const navigate = useNavigate();
 
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
   const handleGuestLogin = () => {
     navigate("/dashboard");
   };
 
-  const handleLogin = (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
-    // Logic to authenticate goes here later (Firebase)
-    navigate("/dashboard");
+    try {
+      await signInWithEmailAndPassword(auth, email, password);
+      navigate("/dashboard");
+    } catch (error) {
+      alert("Login failed: " + error.message);
+    }
   };
 
   return (
@@ -29,15 +38,19 @@ export default function Login() {
 
           <form className="signup-form" onSubmit={handleLogin}>
             <input
-              type="text"
-              placeholder="Username"
+              type="email"
+              placeholder="Email"
               className="input-field animate-slide"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
               required
             />
             <input
               type="password"
               placeholder="Password"
               className="input-field animate-slide delay"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
               required
             />
             <button type="submit" className="signup-button animate-pop">
