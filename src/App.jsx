@@ -6,6 +6,8 @@ import Dashboard from "./pages/Dashboard";
 import Reservation from "./pages/Reservation";
 import Order from "./pages/Order";
 import Menu from "./pages/Menu";
+import Profile from "./pages/Profile";
+
 
 function App() {
   return (
@@ -18,6 +20,7 @@ function App() {
         <Route path="/reservation" element={<Reservation />} />
         <Route path="/order" element={<Order/>}/>
         <Route path="/menu" element={<Menu />} />
+        <Route path="/profile"element={<Profile/>}/>
       </Routes>
     </Router>
   );

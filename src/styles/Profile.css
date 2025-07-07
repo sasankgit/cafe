@@ -1,0 +1,73 @@
+/* Profile.css */
+
+.profile-container {
+  padding: 40px;
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(to right, #fffaf4, #f6f1e7);
+  min-height: 100vh;
+}
+
+.profile-title {
+  font-size: 2.5rem;
+  color: #4b2e2e;
+  text-align: center;
+  margin-bottom: 40px;
+  animation: fadeIn 1s ease;
+}
+
+.meter-box {
+  margin: 0 auto 30px;
+  max-width: 600px;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 16px;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+.meter-label {
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+  color: #6d4c41;
+}
+
+.meter-bar {
+  background-color: #e0d5c1;
+  height: 30px;
+  border-radius: 15px;
+  overflow: hidden;
+}
+
+.meter-fill {
+  height: 100%;
+  background-color: #a9745e;
+  transition: width 1s ease-in-out;
+  border-radius: 15px;
+}
+
+.reward-section {
+  text-align: center;
+  padding: 20px;
+}
+
+.reward-section h2 {
+  color: #4b2e2e;
+  margin-bottom: 10px;
+}
+
+.reward-list {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.reward-badge {
+  background-color: #ffe0b2;
+  padding: 10px 20px;
+  border-radius: 20px;
+  font-weight: bold;
+  color: #5d4037;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}

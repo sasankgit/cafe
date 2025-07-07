@@ -16,14 +16,16 @@ export default function Login() {
   };
 
   const handleLogin = async (e) => {
-    e.preventDefault();
-    try {
-      await signInWithEmailAndPassword(auth, email, password);
-      navigate("/dashboard");
-    } catch (error) {
-      alert("Login failed: " + error.message);
-    }
-  };
+  e.preventDefault();
+  try {
+    await signInWithEmailAndPassword(auth, email, password);
+    localStorage.setItem("userEmail", email); // ✅ Save email
+    navigate("/dashboard");
+  } catch (error) {
+    alert("Login failed: " + error.message);
+  }
+};
+
 
   return (
     <div className="signup-container">

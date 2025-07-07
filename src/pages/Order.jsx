@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { db } from "../firebase"; // <-- make sure this is correct
+import { db } from "../firebase";
 import { collection, addDoc, Timestamp } from "firebase/firestore";
 import "../styles/Order.css";
 
@@ -53,13 +53,13 @@ export default function Order() {
       addons,
       table,
       total: calculateTotal(),
+      user: localStorage.getItem("userEmail"),
       timestamp: Timestamp.now(),
     };
 
     try {
       await addDoc(collection(db, "orders"), order);
       alert(`Order placed for table ${table}! Total: ₹${order.total}`);
-      // Reset form
       setSelectedFood(foodItems[0]);
       setQuantity(1);
       setAddons([]);
