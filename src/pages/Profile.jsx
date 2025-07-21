@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { db } from "../firebase";
 import { collection, query, where, getDocs } from "firebase/firestore";
-import "./Profile.css";
+import "../styles/Profile.css";
 
 export default function Profile() {
   const [totalSpent, setTotalSpent] = useState(0);
@@ -34,8 +34,8 @@ export default function Profile() {
   const calculateRewards = (total) => {
     const rewards = [];
     if (total >= 100) rewards.push("Coffee Fan");
-    if (total >= 300) rewards.push("Espresso Elite");
-    if (total >= 600) rewards.push("Cappuccino Connoisseur");
+    if (total >= 300) rewards.push("elite customer");
+    if (total >= 600) rewards.push("premium lite");
     if (total >= 1000) rewards.push("Premium Member");
 
     setRewards(rewards);
