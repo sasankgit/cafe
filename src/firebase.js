@@ -5,15 +5,7 @@ import { getAuth } from "firebase/auth";
 import { getFirestore } from "firebase/firestore"; // Import the authentication module
 
 // Your web app's Firebase configuration
-const firebaseConfig = {
-  apiKey: "AIzaSyDIPwIhYMhd4fl-6dknpnfpYbaKcoNWGO8",
-  authDomain: "cafe-booking-95fc0.firebaseapp.com",
-  projectId: "cafe-booking-95fc0",
-  storageBucket: "cafe-booking-95fc0.appspot.com",
-  messagingSenderId: "1045882542555",
-  appId: "1:1045882542555:web:3dbd39b79c6277908eeffe",
-  measurementId: "G-5DQSXQSPRH"
-};
+
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
